@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,12 @@ public class Board extends JButton{
 	private int row = 0;
 	private int col = 0;
 	//private int turns = 9;
+	
+	public Board (int r, int c){
+		row = r;
+		col = c;
+		setPreferredSize(new Dimension (SIZE, SIZE));
+	}
 
 	public void setBackground(Color white) {
 		// TODO Auto-generated method stub

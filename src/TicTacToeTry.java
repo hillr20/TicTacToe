@@ -26,8 +26,8 @@ import java.awt.event.ActionEvent;
 
 public class TicTacToeTry extends JFrame {
 	private static final int GRIDSIZE = 3;
-	private static final int row = 3;
-	private static final int col = 3;
+	private int row = 3;
+	private int col = 3;
 	
 	
 	//JButton[][] buttons = new JButton[3][3];
@@ -114,7 +114,7 @@ public class TicTacToeTry extends JFrame {
 	
 		for (int r = 0; r < GRIDSIZE; r++) {
 			for (int c = 0; c < GRIDSIZE; c++) {
-				terrain[r][c] = new Board();
+				terrain[r][c] = new Board(GRIDSIZE, GRIDSIZE);
 				terrain[r][c].setBackground(Color.WHITE);
 				terrain[r][c].addActionListener(new ActionListener() {
 					@Override
@@ -123,7 +123,7 @@ public class TicTacToeTry extends JFrame {
 						int r = button.getRow();
 						int c = button.getCol();
 						
-						terrain[r][c].reveal(true, turns);  
+						terrain[row][col].reveal(true, turns);  
 						turns--;
 						
 						
