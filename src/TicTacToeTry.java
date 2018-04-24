@@ -126,7 +126,24 @@ public class TicTacToeTry extends JFrame {
 						terrain[row][col].reveal(true, turns);  
 						turns--;
 						
-						
+						for (int i = 0; i < 9; i++) {
+							if (turns%2 == 0) {
+								setText("X");
+								//terrain[r][c].reveal(true);
+			
+								
+								turns--;
+							}
+							else{
+								
+								turns--;
+								
+							}
+							
+								//terrain[GRIDSIZE][GRIDSIZE].setBackground(Color.WHITE);
+								
+								
+						}
 						/*if (turns%2 == 0) {
 							//setText("X");
 							//terrain[r][c].reveal(true);
@@ -135,16 +152,23 @@ public class TicTacToeTry extends JFrame {
 							turns--;
 						}
 						else{
+							
 							turns--;
 							//terrain[GRIDSIZE][GRIDSIZE].setBackground(Color.WHITE);
 							
 							
 							
 						}*/
+						//toggle();
 						
 						//int row = button.getRow();
 						//int col = button.getCol();
 						//buttonClicked(int r, int c);
+					}
+
+					private void setText(String string) {
+						System.out.println("X");
+						
 					}
 
 				
@@ -157,7 +181,11 @@ public class TicTacToeTry extends JFrame {
 			
 		}
 	
-	
+	public void buttonClicked(int r, int c) {
+		//toggle button
+		//if the color is one change it to the other
+		//terrain[r][c].toggle();
+	}
 	
 		
 	
