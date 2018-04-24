@@ -26,8 +26,8 @@ import java.awt.event.ActionEvent;
 
 public class TicTacToeTry extends JFrame {
 	private static final int GRIDSIZE = 3;
-	private int row = 3;
-	private int col = 3;
+	String message;
+	
 	
 	
 	//JButton[][] buttons = new JButton[3][3];
@@ -73,6 +73,7 @@ public class TicTacToeTry extends JFrame {
 		centerPanel.setBackground(Color.MAGENTA);
 		centerPanel.setLayout(new GridLayout(GRIDSIZE, GRIDSIZE));
 		add(centerPanel, BorderLayout.CENTER);
+		add(titleLabel, BorderLayout.LINE_START);
 		//centerPanel.add(centerPanel);
 		//Doesn't work. Center Panel does not appear
 
@@ -114,79 +115,62 @@ public class TicTacToeTry extends JFrame {
 	
 		for (int r = 0; r < GRIDSIZE; r++) {
 			for (int c = 0; c < GRIDSIZE; c++) {
-				terrain[r][c] = new Board(GRIDSIZE, GRIDSIZE);
+				terrain[r][c] = new Board(r, c);
 				terrain[r][c].setBackground(Color.WHITE);
+				terrain[r][c].setText("");
+				
 				terrain[r][c].addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Board button = (Board) e.getSource();
-						int r = button.getRow();
-						int c = button.getCol();
-						
+						int row = button.getRow();
+						int col = button.getCol();
+						System.out.println("" + row + col);
 						terrain[row][col].reveal(true, turns);  
 						turns--;
 						
-						for (int i = 0; i < 9; i++) {
-							if (turns%2 == 0) {
-								setText("X");
-								//terrain[r][c].reveal(true);
-			
-								
-								turns--;
-							}
-							else{
-								
-								turns--;
-								
-							}
+						if (turns == 0) {
+							JOptionPane.showMessageDialog(null, "Game over.");
 							
-								//terrain[GRIDSIZE][GRIDSIZE].setBackground(Color.WHITE);
-								
-								
+							promptForNewGame(message);
+							
 						}
-						/*if (turns%2 == 0) {
-							//setText("X");
-							//terrain[r][c].reveal(true);
-		
-							
-							turns--;
-						}
-						else{
-							
-							turns--;
-							//terrain[GRIDSIZE][GRIDSIZE].setBackground(Color.WHITE);
-							
-							
-							
-						}*/
-						//toggle();
 						
-						//int row = button.getRow();
-						//int col = button.getCol();
-						//buttonClicked(int r, int c);
-					}
-
-					private void setText(String string) {
-						System.out.println("X");
 						
-					}
-
-				
+						
+						
+					}			
 										
 				});
+				
 				centerPanel.add(terrain[r][c]);
 			}
 		}
 	
+	
 			
 		}
 	
-	public void buttonClicked(int r, int c) {
-		//toggle button
-		//if the color is one change it to the other
-		//terrain[r][c].toggle();
+	private void promptForNewGame(String message) {
+		
+		int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
+		if (option == JOptionPane.YES_OPTION) {
+			newGame();
+		}
+		else {
+			System.exit(0);
+		}
 	}
-	
+	private void newGame() {
+		for (int r = 0; r < GRIDSIZE; r++) {
+			for (int c = 0; c < GRIDSIZE; c++) {
+				terrain[r][c].reset();
+				
+			}
+			
+		}
+		//setHoles();
+	}
 		
 	
 

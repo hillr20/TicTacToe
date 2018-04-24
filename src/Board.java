@@ -43,30 +43,7 @@ public class Board extends JButton{
 		
 	}	*/
 
-	public void addActionListener(ActionListener actionListener) {
-		// TODO Auto-generated method stub
-		int turns = 9;
-		setText("");
-	//for (int i = 0; i < turns; i--) {
-			if (turns %2 == 0) {
-				setText("X");
-			//terrain[r][c].reveal(true);
-
-			
-				turns--;
-			}
-			else{
-				setText("O");
-				turns--;
-			
-		}
-		//}
-			//terrain[GRIDSIZE][GRIDSIZE].setBackground(Color.WHITE);
-			
-		//setText("X");
-			
-		
-	}
+	
 	
 	
 	 /*@Override
@@ -85,13 +62,11 @@ public class Board extends JButton{
 			revealed = reveal;
 			if (revealed = true) {
 				if (turns%2 == 1 ) {
-					//setBackground(Color.BLACK);
+					setBackground(Color.BLACK);
 					setText("X"); 
 					}
-				
-			
 				else {
-					setBackground(null);
+					setBackground(Color.WHITE);
 					setText("O");
 				}
 			}
